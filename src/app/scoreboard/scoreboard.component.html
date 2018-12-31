@@ -1,0 +1,12 @@
+<div style="display: flex;">
+	<button (click)="incrementHome()">Increment Home</button>
+	<button (click)="incrementAway()">Increment Away</button>
+	<button (click)="resetScore()">Reset Score</button>
+</div>
+<div>
+Score:
+	<div *ngIf="scoreboard$ | async as scoreboard">
+		Home: {{scoreboard.home}}
+		Away: {{scoreboard.away}}
+	</div>
+</div>
