@@ -6,15 +6,19 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { counterReducer } from './counter.reducer';
 import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';
+import { ScoreboardComponent } from './scoreboard/scoreboard.component';
+import { ScoreboardModule } from './scoreboard/scoreboard.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CounterComponent
+    CounterComponent,
+    ScoreboardComponent
   ],
   imports: [
     BrowserModule,
     StoreModule.forRoot({count: counterReducer}),
+    ScoreboardModule,
     StoreDevtoolsModule.instrument({maxAge: 20})
   ],
   providers: [],
