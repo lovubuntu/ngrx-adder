@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { StoreModule, combineReducers, Store } from '@ngrx/store';
 
 import { CounterComponent } from './counter.component';
+import { counterReducer } from '../counter.reducer';
+
 
 describe('CounterComponent', () => {
   let component: CounterComponent;
@@ -8,6 +11,7 @@ describe('CounterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [StoreModule.forRoot({count: counterReducer})],
       declarations: [ CounterComponent ]
     })
     .compileComponents();

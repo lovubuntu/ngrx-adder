@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { StoreModule, Store, combineReducers } from '@ngrx/store';
 
 import { ScoreboardComponent } from './scoreboard.component';
+import {counterReducer} from '../counter.reducer';
+import {scoreboardReducer} from './scoreboard.reducer';
 
 describe('ScoreboardComponent', () => {
   let component: ScoreboardComponent;
@@ -8,7 +11,13 @@ describe('ScoreboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ScoreboardComponent ]
+      declarations: [ ScoreboardComponent ],
+      imports: [
+        StoreModule.forRoot({
+          counter: counterReducer,
+          scoreboard: scoreboardReducer
+        }),
+      ]
     })
     .compileComponents();
   }));
