@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { Increment, Decrement, Reset } from '../counter.actions';
+import { CounterService } from './counter.service';
 
 @Component({
   selector: 'app-counter',
@@ -11,7 +12,7 @@ import { Increment, Decrement, Reset } from '../counter.actions';
 export class CounterComponent implements OnInit {
   count$: Observable<number>;
 
-  constructor(private store: Store<{count: number}>) {
+  constructor(private store: Store<{count: number}>, private counterService: CounterService) {
   	this.count$ = store.pipe(select('count'));
   }
 
@@ -31,5 +32,13 @@ export class CounterComponent implements OnInit {
   reset() {
   	console.log('calling reset');
   	this.store.dispatch(new Reset());
+  }
+
+  save(counter) {
+    console.log('saving counter value', counter);
+    this.counterService.saveCounter(counter).subscribe(
+      res => console.log('response from server', res),
+      (err) => console.log('error from server', err)
+    );
   }
 }

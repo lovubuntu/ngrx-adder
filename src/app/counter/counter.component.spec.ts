@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { StoreModule, combineReducers, Store } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
 
 import { CounterComponent } from './counter.component';
 import { counterReducer } from '../counter.reducer';
@@ -12,7 +13,10 @@ describe('CounterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [StoreModule.forRoot({count: counterReducer})],
+      imports: [
+        StoreModule.forRoot({count: counterReducer}),
+        HttpClientModule
+      ],
       declarations: [ CounterComponent ]
     })
     .compileComponents();
@@ -53,7 +57,6 @@ describe('CounterComponent', () => {
 
   it('should update the display with the counter value', () => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('div').textContent).toContain('Current Count: 0');
 
     component.increment();
 

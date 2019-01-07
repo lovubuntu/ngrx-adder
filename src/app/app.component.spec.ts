@@ -2,7 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
-
+import { HttpClientModule } from '@angular/common/http';
 import { StoreModule, Store } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
@@ -21,7 +21,9 @@ describe('AppComponent', () => {
         StoreModule.forRoot({
           count: counterReducer,
           scoreboard: scoreboardReducer
-        })]
+        }),
+        HttpClientModule
+        ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
