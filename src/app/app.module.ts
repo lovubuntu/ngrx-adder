@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
 import { ScoreboardModule } from './scoreboard/scoreboard.module';
+import { environment } from '../environments/environment';
 
 export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
   return (state, action) => {
@@ -34,7 +35,7 @@ export const metaReducers: MetaReducer<any>[] = [debug];
     ScoreboardModule,
     StoreDevtoolsModule.instrument({maxAge: 20}),
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
+    environment.production ? [] : HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
