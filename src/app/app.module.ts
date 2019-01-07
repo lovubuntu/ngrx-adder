@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 import { counterReducer } from './counter.reducer';
 import { AppComponent } from './app.component';
@@ -29,9 +32,11 @@ export const metaReducers: MetaReducer<any>[] = [debug];
     BrowserModule,
     StoreModule.forRoot({count: counterReducer}, {metaReducers}),
     ScoreboardModule,
-    StoreDevtoolsModule.instrument({maxAge: 20})
+    StoreDevtoolsModule.instrument({maxAge: 20}),
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
