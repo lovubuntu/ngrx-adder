@@ -1,4 +1,4 @@
-# Adder
+# Adder [![Build Status](https://travis-ci.org/lovubuntu/ngrx-adder.svg?branch=master)](https://travis-ci.org/lovubuntu/ngrx-adder)
 An application to tryout ngrx.
 
 ## Build
