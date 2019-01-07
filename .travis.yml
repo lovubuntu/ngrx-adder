@@ -15,5 +15,4 @@ before_script:
 
 script:
   - ng build --prod
-  - ng test  --watch false
-  - ng e2e
+  - ng test  --watch false --browsers ChromeHeadless
