@@ -16,4 +16,4 @@ before_script:
 script:
   - ng build --prod
   - ng test  --watch false --browsers ChromeHeadless
-  - ng e2e
+  - ng e2e --protractor-config="e2e/protractor.ci.conf.js"
