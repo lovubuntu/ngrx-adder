@@ -18,3 +18,11 @@ script:
   - ng test  --watch false --browsers ChromeHeadless
   - ng e2e --protractor-config="e2e/protractor.ci.conf.js"
   - ng build --prod --base-href $base-href
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/adder
+  on:
+    branch: master
