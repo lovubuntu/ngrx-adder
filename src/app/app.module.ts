@@ -18,7 +18,7 @@ export function debug(reducer: ActionReducer<any>): ActionReducer<any> {
     console.log('state', state);
     console.log('action', action);
     return reducer(state, action);
-  }
+  };
 }
 
 export const metaReducers: MetaReducer<any>[] = [debug];

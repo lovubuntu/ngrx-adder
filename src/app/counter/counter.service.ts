@@ -11,7 +11,7 @@ export class CounterService {
   constructor(private httpClient: HttpClient) { }
 
   saveCounter(value: number): Observable<any> {
-  	return this.httpClient.post(this.url, {value});
+    return this.httpClient.post(this.url, {value});
   }
 
 }

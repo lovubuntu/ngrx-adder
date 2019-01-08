@@ -1,4 +1,4 @@
 export interface Scoreboard {
-	away: number;
-	home: number;
+  away: number;
+  home: number;
 }

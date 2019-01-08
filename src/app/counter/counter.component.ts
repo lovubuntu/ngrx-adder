@@ -13,25 +13,25 @@ export class CounterComponent implements OnInit {
   count$: Observable<number>;
 
   constructor(private store: Store<{count: number}>, private counterService: CounterService) {
-  	this.count$ = store.pipe(select('count'));
+    this.count$ = store.pipe(select('count'));
   }
 
   ngOnInit() {
   }
 
   increment() {
-  	console.log('calling increment');
-  	this.store.dispatch(new Increment());
+    console.log('calling increment');
+    this.store.dispatch(new Increment());
   }
 
   decrement() {
-  	console.log('calling decrement');
-  	this.store.dispatch(new Decrement());
+    console.log('calling decrement');
+    this.store.dispatch(new Decrement());
   }
 
   reset() {
-  	console.log('calling reset');
-  	this.store.dispatch(new Reset());
+    console.log('calling reset');
+    this.store.dispatch(new Reset());
   }
 
   save(counter) {

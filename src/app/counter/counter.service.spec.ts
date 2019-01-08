@@ -9,8 +9,8 @@ describe('CounterService', () => {
     spyHttpService = jasmine.createSpyObj('HttpClient', ['post']);
     TestBed.configureTestingModule({
       providers: [{provide: HttpClient, useValue: spyHttpService}]
-		});
-	})
+    });
+  });
 
   it('should be created', () => {
     const service: CounterService = TestBed.get(CounterService);

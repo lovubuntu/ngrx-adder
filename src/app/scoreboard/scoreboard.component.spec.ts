@@ -50,7 +50,7 @@ describe('ScoreboardComponent', () => {
     component.incrementAway();
 
     expect(store.dispatch).toHaveBeenCalledWith(incrementAwayAction);
-  })
+  });
 
   it('should reset the score', () => {
     const resetPayload = {home: 0, away: 0} as Scoreboard;
@@ -58,7 +58,7 @@ describe('ScoreboardComponent', () => {
     component.resetScore();
 
     expect(store.dispatch).toHaveBeenCalledWith(resetAction);
-  })
+  });
 
   it('should update scoreboard when an action is emitted', () => {
     component.incrementHome();

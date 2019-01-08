@@ -16,23 +16,23 @@ export class ScoreboardComponent implements OnInit {
   awayScore$: Observable<number>;
 
   constructor(private store: Store<{scoreboard: Scoreboard}>) {
-	this.scoreboard$ = store.pipe(select('scoreboard'));
-	this.homeScore$ = store.pipe(select(selectHomeScore));
-	this.awayScore$ = store.pipe(select(selectAwayScore));
+  this.scoreboard$ = store.pipe(select('scoreboard'));
+  this.homeScore$ = store.pipe(select(selectHomeScore));
+  this.awayScore$ = store.pipe(select(selectAwayScore));
   }
 
   ngOnInit() {
   }
 
   incrementHome() {
-  	this.store.dispatch(new IncrementHome());
+    this.store.dispatch(new IncrementHome());
   }
 
   incrementAway() {
-  	this.store.dispatch(new IncrementAway());
+    this.store.dispatch(new IncrementAway());
   }
 
   resetScore() {
-  	this.store.dispatch(new ResetScore({home: 0, away: 0}));
+    this.store.dispatch(new ResetScore({home: 0, away: 0}));
   }
 }
