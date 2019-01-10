@@ -10,7 +10,7 @@ export function counterReducer(state = initialState, action) {
     case ActionTypes.DECREMENT:
       return state - 1;
     case ActionTypes.RESET:
-      return 0;
+      return action.payload;
     default:
       return state;
   }

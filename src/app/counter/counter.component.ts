@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { Increment, Decrement, Reset, Save } from '../counter.actions';
+import { Increment, Decrement, Reset, Save, FetchCounter } from '../counter.actions';
 import { CounterService } from './counter.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class CounterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.store.dispatch(new FetchCounter(1));
   }
 
   increment() {

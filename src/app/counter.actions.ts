@@ -4,7 +4,8 @@ export enum ActionTypes {
   INCREMENT = '[Counter Increment] Increment',
   DECREMENT = '[Counter Decrement] Decrement',
   RESET = '[Counter Reset] Reset',
-  SAVE = '[Counter Save] Save'
+  SAVE = '[Counter Save] Save',
+  FETCH_COUNTER = '[Counter Fetch] Fetch'
 }
 
 export class Increment implements Action {
@@ -17,6 +18,7 @@ export class Decrement implements Action {
 
 export class Reset implements Action {
   readonly type = ActionTypes.RESET;
+  constructor(public payload: number = 0) {}
 }
 
 export class Save implements Action {
@@ -24,4 +26,9 @@ export class Save implements Action {
   constructor(public payload: any) {}
 }
 
-export type CounterActionsUnion = Increment | Decrement | Reset | Save;
+export class FetchCounter implements Action {
+  readonly type = ActionTypes.FETCH_COUNTER;
+  constructor(public payload: number) {}
+}
+
+export type CounterActionsUnion = Increment | Decrement | Reset | Save | FetchCounter;
