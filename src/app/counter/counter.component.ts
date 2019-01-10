@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { Increment, Decrement, Reset } from '../counter.actions';
+import { Increment, Decrement, Reset, Save } from '../counter.actions';
 import { CounterService } from './counter.service';
 
 @Component({
@@ -36,9 +36,10 @@ export class CounterComponent implements OnInit {
 
   save(counter) {
     console.log('saving counter value', counter);
-    this.counterService.saveCounter(counter).subscribe(
-      res => console.log('response from server', res),
-      (err) => console.log('error from server', err)
-    );
+    this.store.dispatch(new Save(counter));
+    // this.counterService.saveCounter(counter).subscribe(
+      // res => console.log('response from server', res),
+      // (err) => console.log('error from server', err)
+    // );
   }
 }

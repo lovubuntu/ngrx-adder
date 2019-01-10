@@ -5,7 +5,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { EffectsModule } from '@ngrx/effects';
 
+import { CounterEffects } from './counter/counter.effects';
 import { counterReducer } from './counter.reducer';
 import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';
@@ -32,6 +34,7 @@ export const metaReducers: MetaReducer<any>[] = [debug];
   imports: [
     BrowserModule,
     StoreModule.forRoot({count: counterReducer}, {metaReducers}),
+    EffectsModule.forRoot([CounterEffects]),
     ScoreboardModule,
     StoreDevtoolsModule.instrument({maxAge: 20}),
     HttpClientModule,
