@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -38,6 +39,7 @@ export const metaReducers: MetaReducer<any>[] = [debug];
     ScoreboardModule,
     StoreDevtoolsModule.instrument({maxAge: 20}),
     HttpClientModule,
+    ReactiveFormsModule,
     environment.production ? [] : HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false})
   ],
   providers: [HttpClient],

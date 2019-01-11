@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Scoreboard } from './scoreboard';
@@ -14,6 +15,10 @@ export class ScoreboardComponent implements OnInit {
   scoreboard$: Observable<Scoreboard>;
   homeScore$: Observable<number>;
   awayScore$: Observable<number>;
+  homePlayersForm = new FormGroup({
+    name: new FormControl(''),
+    score: new FormControl('')
+  });
 
   constructor(private store: Store<{scoreboard: Scoreboard}>) {
   this.scoreboard$ = store.pipe(select('scoreboard'));
@@ -34,5 +39,9 @@ export class ScoreboardComponent implements OnInit {
 
   resetScore() {
     this.store.dispatch(new ResetScore({home: 0, away: 0}));
+  }
+
+  onSubmit() {
+    console.log('submitting', this.homePlayersForm.value);
   }
 }

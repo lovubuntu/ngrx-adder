@@ -12,3 +12,15 @@ Score:
 	<div>Individual Home {{homeScore$ | async}}</div>
 	<div>Extracted Away {{awayScore$ | async}}</div>
 </div>
+<div>
+	<h3>Home Side</h3>
+	<form [formGroup]="homePlayersForm" (ngSubmit)="onSubmit()">
+		<label>Player Name
+			<input type="text" formControlName="name">
+		</label>
+		<label>Score
+			<input type="text" formControlName="score">
+		</label>
+		<button type="submit" [disabled]="!homePlayersForm.valid">Update Score</button>
+	</form>
+</div>
