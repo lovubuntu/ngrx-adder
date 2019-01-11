@@ -41,13 +41,13 @@ export function scoreboardReducer(state = initialState, action: ScoreboardAction
       return {
         ...state,
         pending: true
-      }
+      };
 
     case ScoreboardActions.Actions.Success:
       return {
         ...state,
         pending: false
-      }
+      };
 
     default:
       return state;

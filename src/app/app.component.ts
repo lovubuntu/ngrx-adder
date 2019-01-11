@@ -20,7 +20,7 @@ export class AppComponent {
   onSubmit(payload: PlayerScore) {
     if (payload.side === PlayingSide.Home) {
       this.store.dispatch(new Pending());
-      for (var i = 0; i < payload.score; i++) {
+      for (let i = 0; i < payload.score; i++) {
         this.store.dispatch(new IncrementHome());
       }
       this.store.dispatch(new Success());
