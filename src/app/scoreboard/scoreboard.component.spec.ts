@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { StoreModule, Store, combineReducers } from '@ngrx/store';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ScoreboardComponent } from './scoreboard.component';
 import {counterReducer} from '../counter.reducer';
@@ -12,15 +13,17 @@ describe('ScoreboardComponent', () => {
   let component: ScoreboardComponent;
   let fixture: ComponentFixture<ScoreboardComponent>;
   let store: Store<Scoreboard>;
+  const baseScoreboard = {pending: false, home: 0, away: 0} as Scoreboard;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ScoreboardComponent ],
       imports: [
+        ReactiveFormsModule,
         StoreModule.forRoot({
           counter: counterReducer,
           scoreboard: scoreboardReducer
-        }),
+        })
       ]
     })
     .compileComponents();
@@ -63,6 +66,6 @@ describe('ScoreboardComponent', () => {
   it('should update scoreboard when an action is emitted', () => {
     component.incrementHome();
 
-    component.scoreboard$.subscribe(data => expect(data).toEqual({home: 1, away: 0}));
+    component.scoreboard$.subscribe(data => expect(data).toEqual({...baseScoreboard, home: 1}));
   });
 });

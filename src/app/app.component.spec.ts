@@ -1,4 +1,5 @@
 import { TestBed, async } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CounterComponent } from './counter/counter.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
@@ -22,7 +23,8 @@ describe('AppComponent', () => {
           count: counterReducer,
           scoreboard: scoreboardReducer
         }),
-        HttpClientModule
+        HttpClientModule,
+        ReactiveFormsModule
         ]
     }).compileComponents();
   }));
