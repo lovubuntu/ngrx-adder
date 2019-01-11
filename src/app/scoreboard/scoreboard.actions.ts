@@ -4,7 +4,9 @@ import {Scoreboard} from './scoreboard';
 export enum Actions {
   IncrementHome = '[Scoreboard] Increment Home',
   IncrementAway = '[Scoreboard] Increment Away',
-  Reset = '[Scoreboard] Reset'
+  Reset = '[Scoreboard] Reset',
+  Pending = '[Scoreboard] Pending',
+  Success = '[Scoreboard] Success'
 }
 
 export class IncrementHome implements Action {
@@ -21,4 +23,12 @@ export class ResetScore implements Action {
   }
 }
 
-export type ActionsUnion = IncrementHome | IncrementAway | ResetScore;
+export class Pending implements Action {
+  readonly type = Actions.Pending;
+}
+
+export class Success implements Action {
+  readonly type = Actions.Success;
+}
+
+export type ActionsUnion = IncrementHome | IncrementAway | ResetScore | Pending | Success;

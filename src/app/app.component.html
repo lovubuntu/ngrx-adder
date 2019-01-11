@@ -2,4 +2,7 @@
 <app-counter></app-counter>
 <br>
 <h1>Welcome, Here's your scoreboard</h1>
-<app-scoreboard></app-scoreboard>
+<app-scoreboard 
+	[pending]="pending$ | async"
+	(scoreSubmit) = "onSubmit($event)">
+</app-scoreboard>

@@ -4,7 +4,8 @@ import {Scoreboard} from './scoreboard';
 
 const initialState = {
   home: 0,
-  away: 0
+  away: 0,
+  pending: false
 } as Scoreboard;
 
 export const selectScoreboard = (state) => state.scoreboard;
@@ -35,6 +36,18 @@ export function scoreboardReducer(state = initialState, action: ScoreboardAction
 
     case ScoreboardActions.Actions.Reset:
       return action.payload;
+
+    case ScoreboardActions.Actions.Pending:
+      return {
+        ...state,
+        pending: true
+      }
+
+    case ScoreboardActions.Actions.Success:
+      return {
+        ...state,
+        pending: false
+      }
 
     default:
       return state;

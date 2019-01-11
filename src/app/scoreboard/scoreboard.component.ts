@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Scoreboard } from './scoreboard';
+import { Scoreboard, PlayerScore } from './scoreboard';
 import { IncrementHome, IncrementAway, ResetScore } from './scoreboard.actions';
 import { selectHomeScore, selectAwayScore } from './scoreboard.reducer';
 
@@ -12,11 +12,24 @@ import { selectHomeScore, selectAwayScore } from './scoreboard.reducer';
   styleUrls: ['./scoreboard.component.css']
 })
 export class ScoreboardComponent implements OnInit {
+  @Input()
+  set pending(isPending: boolean) {
+    if (isPending) {
+      console.warn('am in peding');
+      this.homePlayersForm.disable();
+      return;
+    }
+    console.warn('am free');
+    this.homePlayersForm.enable();
+  }
+  @Output()
+  scoreSubmit: EventEmitter<PlayerScore> = new EventEmitter();
   scoreboard$: Observable<Scoreboard>;
   homeScore$: Observable<number>;
   awayScore$: Observable<number>;
   homePlayersForm = new FormGroup({
-    name: new FormControl(''),
+    side: new FormControl('HOME'),
+    playerName: new FormControl(''),
     score: new FormControl('')
   });
 
@@ -43,5 +56,6 @@ export class ScoreboardComponent implements OnInit {
 
   onSubmit() {
     console.log('submitting', this.homePlayersForm.value);
+    this.scoreSubmit.emit(this.homePlayersForm.value);
   }
 }
