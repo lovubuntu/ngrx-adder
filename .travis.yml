@@ -16,7 +16,7 @@ before_script:
 script:
   - ng lint
   - ng test  --watch false --browsers ChromeHeadless
-  - ng e2e --protractor-config="e2e/protractor.ci.conf.js"
+  - ng e2e_ci
   - ng build --prod --base-href $base_href
 
 deploy:
