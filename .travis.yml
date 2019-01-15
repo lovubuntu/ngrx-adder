@@ -14,10 +14,10 @@ before_script:
   - npm install -g @angular/cli
 
 script:
-  - ng lint
-  - ng test  --watch false --browsers ChromeHeadless
-  - ng e2e_ci
-  - ng build --prod --base-href $base_href
+  - yarn lint
+  - yarn test  --watch false --browsers ChromeHeadless
+  - yarn e2e_ci
+  - yarn build --prod --base-href $base_href
 
 deploy:
   provider: pages
